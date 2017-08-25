@@ -14,24 +14,53 @@
 
 上記ページの「初版1刷～5刷用サンプルプログラム」からサンプルプログラムをダウンロードする。その後、解凍したファイル内の「ch7」を使用する。
 
-### pipをインストール
-パッケージ管理システムpipをインストールする。
-```
-$ sudo apt install python3-pip
-```
+### Python3のインストール
+
+Python3のインストール方法は各種存在しますが、ここではAnacondaでの環境構築を紹介します。
+
+Anaconda は、Continuum Analytics 社によって提供されている、Python 本体に加え、科学技術、数学、エンジニアリング、データ分析など、よく利用される Python パッケージ（2016 年 2 月時点で 400 以上）を一括でインストール可能にしたパッケージです。
+
+https://github.com/redimpulz/ml_hack/issues/1
+
+### pipでライブラリをインストール
+
+pipは、pythonのパッケージ管理システムです。
+
+Python 2.7.9以降、Python 3.4以降のバージョンにはデフォルトでインストールされています。
+インストールされていない場合は、以下を参考にインストールしてください。
+
+[Pythonのパッケージ管理システムpipのインストールと使い方](http://uxmilk.jp/12691)
 
 pipコマンドで必要なパッケージをインストールする。
+
 ```
-$ pip3 install beautifulsoup4
-$ pip3 install sklearn
-$ pip3 install h5py
-$ pip3 install keras
+$ pip install beautifulsoup4
+$ pip install sklearn
+$ pip install h5py
+$ pip install keras
 ```
 
-UECWirelessを使用する場合プロキシ設定が必要になる。以下のコマンドをターミナル等に入力してから、ダウンロードを実行する。
+### プロキシの設定
+
+UECWirelessを使用している場合、本プログラムの実行にはプロキシ設定が必要になる。
+以下のコマンドをターミナル等に入力してから、ダウンロードを実行する。
+
+#### Mac, Linuxの場合
+
+ターミナルから、以下のコマンドを入力
+
 ```
 $ export HTTP_PROXY=http://proxy.uec.ac.jp:8080
 $ export HTTPS_PROXY=http://proxy.uec.ac.jp:8080
+```
+
+#### Windowsの場合
+
+コマンドプロンプトから、以下のコマンドを入力
+
+```
+$ set HTTP_PROXY=http://proxy.uec.ac.jp:8080
+$ set HTTPS_PROXY=http://proxy.uec.ac.jp:8080
 ```
 
 ### 画像取得
