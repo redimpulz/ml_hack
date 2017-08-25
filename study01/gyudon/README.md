@@ -22,14 +22,19 @@ Anaconda は、Continuum Analytics 社によって提供されている、Python
 
 https://github.com/redimpulz/ml_hack/issues/1
 
-### pipでライブラリをインストール
+#### pipのインストール
 
 pipは、pythonのパッケージ管理システムです。
-
 Python 2.7.9以降、Python 3.4以降のバージョンにはデフォルトでインストールされています。
+
 インストールされていない場合は、以下を参考にインストールしてください。
 
 [Pythonのパッケージ管理システムpipのインストールと使い方](http://uxmilk.jp/12691)
+
+以下の章の説明では、pythonの2系と3系が共存している環境の場合は、 `python` コマンドと `pip` コマンドを `python3` と `pip3` に置き換えて実行してください。
+
+### ライブラリのインストール
+
 
 pipコマンドで必要なパッケージをインストールする。
 
@@ -66,7 +71,7 @@ $ set HTTPS_PROXY=http://proxy.uec.ac.jp:8080
 ### 画像取得
 はじめに学習データとなる牛丼画像をスクレイピングで取得する。
 ```
-$ python3 gyudon_downloader.py
+$ python gyudon_downloader.py
 ```
 
 72行目
@@ -108,7 +113,7 @@ $ php -S localhost:8000 -t ch7/
 python の Numpy を使用して振り分けた画像を元に数値データを作成する。
 
 ```
-$ python3 gyudon-makedata.py
+$ python gyudon-makedata.py
 --- normal を処理中
 --- beni を処理中
 --- negi を処理中
@@ -121,7 +126,7 @@ gyudon-makedata.py を実行すると「image/gyudon.npy」という Numpy の�
 ### CNNで学習
 Numpyのデータを畳み込みニュートラルネットワーク(CNN)で学習させる。
 ```
-$ python3 gyudon_keras.py
+$ python gyudon_keras.py
 Using TensorFlow backend.
 ...
 loss= 0.86482
@@ -135,8 +140,9 @@ accuracy= 0.90133
 学習させたモデルを元に、画像を判別する。
 
 ```
-$ python3 gyudon-checker.py (画像パス1) (画像パス2) ...
+$ python gyudon-checker.py (画像パス1) (画像パス2) ...
 ```
+
 上記コマンドの実行、解析結果HTMLが生成される。
 
 ```
@@ -148,20 +154,24 @@ $ python3 gyudon-checker.py (画像パス1) (画像パス2) ...
 正解率を上げるために、チューニングを行う。画像の角度を変えたり反転させたりしてデータ数を増やす。
 
 先ほど使用した gyudon-makedata.py を改良したものが gyudon-makedata2.py になる。コマンドから以下を実行して画像データを水増しする。
+
 ```
-$ python3 gyudon-makedata2.py
+$ python gyudon-makedata2.py
 ok, 2020
 ```
 
 画像データが増えた状態で学習させる。
+
 ```
-$ python3 gyudon_keras2.py
+$ python gyudon_keras2.py
 ```
+
 学習に20分程かかる。
 
 画像判別は、前回同様のコマンドを実行する。
+
 ```
-$ python3 gyudon-checker.py (画像パス1) (画像パス2) ...
+$ python gyudon-checker.py (画像パス1) (画像パス2) ...
 ```
 
 ## 忙しい人のための画像データ
